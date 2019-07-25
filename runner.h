@@ -30,13 +30,14 @@ namespace core
         std::chrono::milliseconds frame_lenght_;
 
     protected:
+        __int32_t dpi_;
         __int32_t  width_;
         __int32_t  height_;
         float touch_x_;
         float touch_y_;
 
     public:
-        Runner(__int32_t view_info, std::chrono::milliseconds frame_lenght);
+        Runner(__int32_t view_info, __int32_t image_width, std::chrono::milliseconds frame_lenght);
         ~Runner();
         void Tick();
 
@@ -46,6 +47,7 @@ namespace core
         void Run(const char* size);
 
     protected:
+        virtual void Initial() = 0;
         virtual void Step(__int32_t* pixels) = 0;
         virtual void TouchBegin(float x, float y) = 0;
         virtual void TouchMove(float x, float y) = 0;

@@ -12,10 +12,11 @@
 #include <sstream>
 
 
-core::Runner::Runner(__int32_t view_info, std::chrono::milliseconds frame_lenght)
+core::Runner::Runner(__int32_t view_info, __int32_t image_width, std::chrono::milliseconds frame_lenght)
     : frame_lenght_{frame_lenght}
     , run_{true}
     , step_{true}
+    , dpi_{0}
     , width_{0}
     , height_{0}
     , touch_x_{0.0f}
@@ -50,7 +51,7 @@ core::Runner::Runner(__int32_t view_info, std::chrono::milliseconds frame_lenght
                 std::this_thread::sleep_for(wait);
         }
     });
-    bridge::LoadImageView(index_, view_info);
+    bridge::LoadImageView(index_, view_info, image_width);
 }
 
 core::Runner::~Runner()
@@ -118,7 +119,8 @@ void core::Runner::Run(const char* size)
 {
     std::istringstream parser(size);
     lock_step_.lock();
-    parser >> width_ >> height_;
+    parser >> dpi_ >> width_ >> height_;
     lock_step_.unlock();
     condition_step_.notify_all();
+    Initial();
 }

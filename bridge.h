@@ -15,7 +15,7 @@ namespace bridge
 {
     void OnRestart();
     void LoadWebView(const __int32_t sender, const __int32_t view_info, const char *html);
-    void LoadImageView(const __int32_t sender, const __int32_t view_info);
+    void LoadImageView(const __int32_t sender, const __int32_t view_info, const __int32_t image_width);
     __int32_t* GetPixels();
     void ReleasePixels(__int32_t* const pixels);
     void RefreshImageView();

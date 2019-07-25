@@ -53,10 +53,10 @@ void interface::Restart()
     life_cycle::Restart();
 }
 
-void interface::RunImageView(const __int32_t receiver, const __int32_t width, const __int32_t height)
+void interface::RunImageView(const __int32_t receiver, const __int32_t dpi, const __int32_t width, const __int32_t height)
 {
     std::ostringstream composer;
-    composer << "body ready " << width << ' ' << height;
+    composer << "body ready" << ' ' << dpi << ' ' << width << ' ' << height;
     interface::Handle(receiver, composer.str().c_str());
 }
 

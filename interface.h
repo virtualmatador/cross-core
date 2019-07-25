@@ -21,7 +21,7 @@ namespace interface
     void Start();
     void Stop();
     void Restart();
-    void RunImageView(const __int32_t receiver, const __int32_t width, const __int32_t height);
+    void RunImageView(const __int32_t receiver, const __int32_t dpi, const __int32_t width, const __int32_t height);
     void Handle(const __int32_t receiver, const char *message);
 }
 
