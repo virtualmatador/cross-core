@@ -12,15 +12,15 @@
 #include <sstream>
 
 
-core::Runner::Runner(__int32_t view_info, __int32_t image_width, std::chrono::milliseconds frame_lenght)
-    : frame_lenght_{frame_lenght}
-    , run_{true}
+core::Runner::Runner(__int32_t view_info, __int32_t image_width)
+    : run_{true}
     , step_{true}
     , dpi_{0}
     , width_{0}
     , height_{0}
     , touch_x_{0.0f}
     , touch_y_{0.0f}
+    , frame_lenght_{0}
 {
     SetHandlers();
     worker_ = std::thread([this, index = index_]()
@@ -65,7 +65,7 @@ core::Runner::~Runner()
 
 void core::Runner::Tick()
 {
-    __int32_t* pixels = bridge::GetPixels();
+    __uint32_t* pixels = bridge::GetPixels();
     Step(pixels);
     bridge::ReleasePixels(pixels);
     bridge::RefreshImageView();
@@ -83,8 +83,6 @@ void core::Runner::SetHandlers()
             return;
         else if (std::strcmp(command, "tick") == 0)
             Tick();
-        else if (std::strcmp(command, "ready") == 0)
-            Run(info);
         else if (std::strcmp(command, "touch-begin") == 0)
             Touch(1, info);
         else if (std::strcmp(command, "touch-move") == 0)
@@ -92,6 +90,17 @@ void core::Runner::SetHandlers()
         else if (std::strcmp(command, "touch-end") == 0)
             Touch(3, info);
     };
+}
+
+void core::Runner::Run(const __int32_t dpi, const __int32_t width, const __int32_t height)
+{
+    lock_step_.lock();
+    dpi_ = dpi;
+    width_ = width;
+    height_ = height;
+    lock_step_.unlock();
+    condition_step_.notify_all();
+    Initial();
 }
 
 void core::Runner::Touch(int action, const char* position)
@@ -113,14 +122,4 @@ void core::Runner::Touch(int action, const char* position)
     }
     touch_x_ = x;
     touch_y_ = y;
-}
-
-void core::Runner::Run(const char* size)
-{
-    std::istringstream parser(size);
-    lock_step_.lock();
-    parser >> dpi_ >> width_ >> height_;
-    lock_step_.unlock();
-    condition_step_.notify_all();
-    Initial();
 }

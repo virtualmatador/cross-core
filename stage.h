@@ -34,6 +34,7 @@ namespace core
         Stage();
         virtual ~Stage();
         void Handle(const char* message);
+        virtual void Escape() = 0;
 
     protected:
         std::thread Backend(const char* path, Pack request);
