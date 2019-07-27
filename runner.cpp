@@ -14,7 +14,7 @@
 
 core::Runner::Runner(__int32_t view_info, __int32_t image_width)
     : run_{true}
-    , step_{true}
+    , step_{false}
     , dpi_{0}
     , width_{0}
     , height_{0}
@@ -27,7 +27,7 @@ core::Runner::Runner(__int32_t view_info, __int32_t image_width)
     {
         {
             std::unique_lock<std::mutex> lock_condition(lock_step_);
-            condition_step_.wait(lock_condition, [this]() { return (width_ > 0 && height_ > 0) || !run_; });
+            condition_step_.wait(lock_condition, [this]() { return step_ || !run_; });
             if (!run_)
                 return;
         }
@@ -83,6 +83,8 @@ void core::Runner::SetHandlers()
             return;
         else if (std::strcmp(command, "tick") == 0)
             Tick();
+        else if (std::strcmp(command, "ready") == 0)
+            Run(info);
         else if (std::strcmp(command, "touch-begin") == 0)
             Touch(1, info);
         else if (std::strcmp(command, "touch-move") == 0)
@@ -92,12 +94,12 @@ void core::Runner::SetHandlers()
     };
 }
 
-void core::Runner::Run(const __int32_t dpi, const __int32_t width, const __int32_t height)
+void core::Runner::Run(const char* dimensions)
 {
+    std::istringstream parser(dimensions);
+    parser >> dpi_ >> width_ >> height_;
     lock_step_.lock();
-    dpi_ = dpi;
-    width_ = width;
-    height_ = height;
+    step_ = true;
     lock_step_.unlock();
     condition_step_.notify_all();
     Initial();

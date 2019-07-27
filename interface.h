@@ -21,9 +21,9 @@ namespace interface
     void Start();
     void Stop();
     void Restart();
-    void RunImageView(const __int32_t receiver, const __int32_t dpi, const __int32_t width, const __int32_t height);
-    void Handle(const __int32_t receiver, const char *message);
-    void Escape(const __int32_t receiver);
+    void Escape();
+    void Handle(const char *message);
+    void HandleAsync(const __int32_t receiver, const char *message);
 }
 
 #endif //CORE_INTERFACE_H

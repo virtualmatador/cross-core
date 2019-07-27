@@ -53,20 +53,18 @@ void interface::Restart()
     life_cycle::Restart();
 }
 
-void interface::RunImageView(const __int32_t receiver, const __int32_t dpi, const __int32_t width, const __int32_t height)
+void interface::Escape()
 {
-    if (core::Stage::index_ == receiver)
-        ((core::Runner*)core::Stage::stage_.get())->Run(dpi, width, height);
+    core::Stage::stage_->Escape();
 }
 
-void interface::Handle(const __int32_t receiver, const char* message)
+void interface::Handle(const char* message)
+{
+    core::Stage::stage_->Handle(message);
+}
+
+void interface::HandleAsync(const __int32_t receiver, const char* message)
 {
     if (core::Stage::index_ == receiver)
         core::Stage::stage_->Handle(message);
-}
-
-void interface::Escape(const __int32_t receiver)
-{
-    if (core::Stage::index_ == receiver)
-        core::Stage::stage_->Escape();
 }

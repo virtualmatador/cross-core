@@ -39,7 +39,7 @@ namespace core
     public:
         Runner(__int32_t view_info, __int32_t image_width);
         ~Runner();
-        void Run(const __int32_t dpi, const __int32_t width, const __int32_t height);
+        void Run(const char* dimensions);
         void Tick();
 
     private:
