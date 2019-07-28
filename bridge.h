@@ -24,6 +24,8 @@ namespace bridge
     std::string GetPreference(const char* key);
     void SetPreference(const char* key, const char* value);
     void PostThreadMessage(const __int32_t sender, const char* message);
+    void AddMenu(const char* option);
+    void RemoveMenu(const char* option);
     void Exit();
 }
 

@@ -53,11 +53,6 @@ void interface::Restart()
     life_cycle::Restart();
 }
 
-void interface::Escape()
-{
-    core::Stage::stage_->Escape();
-}
-
 void interface::Handle(const char* message)
 {
     core::Stage::stage_->Handle(message);
