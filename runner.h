@@ -33,6 +33,7 @@ namespace core
         __int32_t dpi_;
         __int32_t  width_;
         __int32_t  height_;
+        __uint32_t order_rgba_;
         float touch_x_;
         float touch_y_;
 

@@ -18,6 +18,7 @@ core::Runner::Runner(__int32_t view_info, __int32_t image_width)
     , dpi_{0}
     , width_{0}
     , height_{0}
+    , order_rgba_{0}
     , touch_x_{0.0f}
     , touch_y_{0.0f}
     , frame_lenght_{0}
@@ -97,7 +98,7 @@ void core::Runner::SetHandlers()
 void core::Runner::Run(const char* dimensions)
 {
     std::istringstream parser(dimensions);
-    parser >> dpi_ >> width_ >> height_;
+    parser >> dpi_ >> width_ >> height_ >> order_rgba_;
     lock_step_.lock();
     step_ = true;
     lock_step_.unlock();
