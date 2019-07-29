@@ -20,6 +20,7 @@ namespace core
         Portrait = 0x00000001,
         Landscape = 0x00000002,
         ScreenOn = 0x00000004,
+        CloseMenu = 0x00000008,
     };
 }
 

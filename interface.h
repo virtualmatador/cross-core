@@ -21,6 +21,7 @@ namespace interface
     void Start();
     void Stop();
     void Restart();
+    void Escape();
     void Handle(const char *message);
     void HandleAsync(const __int32_t receiver, const char *message);
 }

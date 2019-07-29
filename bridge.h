@@ -13,7 +13,7 @@
 
 namespace bridge
 {
-    void OnRestart();
+    void NeedRestart();
     void LoadWebView(const __int32_t sender, const __int32_t view_info, const char *html);
     void LoadImageView(const __int32_t sender, const __int32_t view_info, const __int32_t image_width);
     __uint32_t* GetPixels();
@@ -24,8 +24,6 @@ namespace bridge
     std::string GetPreference(const char* key);
     void SetPreference(const char* key, const char* value);
     void PostThreadMessage(const __int32_t sender, const char* message);
-    void AddMenu(const char* option);
-    void RemoveMenu(const char* option);
     void Exit();
 }
 
