@@ -9,12 +9,8 @@
 #ifndef CORE_STAGE_H
 #define CORE_STAGE_H
 
-#include "pack.h"
 #include "bridge.h"
 #include "define.h"
-
-#include <asio.hpp>
-#include <asio/ssl.hpp>
 
 #include <map>
 #include <string>
@@ -36,15 +32,9 @@ namespace core
         void Handle(const char* message);
         virtual void Escape() = 0;
 
-    protected:
-        std::thread Backend(const char* path, Pack request);
-
     public:
         static int index_;
         static std::unique_ptr<Stage> stage_;
-        static std::string public_key_;
-        static asio::io_service io_service_;
-        static asio::ssl::context ssl_;
     };
 }
 
