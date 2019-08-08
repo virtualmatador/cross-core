@@ -11,6 +11,7 @@
 
 #include <string>
 
+
 namespace bridge
 {
     void NeedRestart();
@@ -24,6 +25,8 @@ namespace bridge
     std::string GetPreference(const char* key);
     void SetPreference(const char* key, const char* value);
     void PostThreadMessage(const __int32_t sender, const char* message);
+    void AddParam(const char* key, const char* value);
+    void PostHttp(const __int32_t sender, const char* url, const char* callback);
     void Exit();
 }
 
