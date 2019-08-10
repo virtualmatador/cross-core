@@ -29,7 +29,7 @@ namespace core
     public:
         Stage();
         virtual ~Stage();
-        void Handle(const char* message);
+        void Handle(const char* id, const char* command, const char* info);
         virtual void Escape() = 0;
 
     public:

@@ -24,9 +24,9 @@ namespace bridge
     std::string GetAsset(const char* key);
     std::string GetPreference(const char* key);
     void SetPreference(const char* key, const char* value);
-    void PostThreadMessage(const __int32_t sender, const char* message);
+    void PostThreadMessage(const __int32_t sender, const char* id, const char* command, const char* info);
     void AddParam(const char* key, const char* value);
-    void PostHttp(const __int32_t sender, const char* url, const char* callback);
+    void PostHttp(const __int32_t sender, const char* url, const char* id, const char* command);
     void Exit();
 }
 

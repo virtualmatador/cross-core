@@ -58,13 +58,13 @@ void interface::Escape()
     core::Stage::stage_->Escape();
 }
 
-void interface::Handle(const char* message)
+void interface::Handle(const char* id, const char* command, const char* info)
 {
-    core::Stage::stage_->Handle(message);
+    core::Stage::stage_->Handle(id, command, info);
 }
 
-void interface::HandleAsync(const __int32_t receiver, const char* message)
+void interface::HandleAsync(const __int32_t receiver, const char* id, const char* command, const char* info)
 {
     if (core::Stage::index_ == receiver)
-        core::Stage::stage_->Handle(message);
+        core::Stage::stage_->Handle(id, command, info);
 }

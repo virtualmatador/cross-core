@@ -11,11 +11,11 @@
 
 #include "helper.h"
 
-void helper::Http(const char* url, std::list<std::pair<std::string, std::string>> & params, const char* callback)
+void helper::Http(const char* url, std::list<std::pair<std::string, std::string>> & params, const char* id, const char* command)
 {
     for (const auto & param : params)
         bridge::AddParam(param.first.c_str(), param.second.c_str());
-    bridge::PostHttp(core::Stage::index_, url, callback);
+    bridge::PostHttp(core::Stage::index_, url, id, command);
 }
 
 std::string helper::EscapeHtml(const char* text)

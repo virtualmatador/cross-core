@@ -24,11 +24,7 @@ core::Stage::~Stage()
 {
 }
 
-void core::Stage::Handle(const char* message)
+void core::Stage::Handle(const char* id, const char* command, const char* info)
 {
-    std::istringstream parser(message);
-    std::string id, command, info;
-    parser >> id >> command;
-    std::getline(parser, info, '\0');
-    handlers_[id](command.c_str(), info.c_str());
+    handlers_[id](command, info);
 }

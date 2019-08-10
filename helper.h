@@ -15,7 +15,7 @@
 
 namespace helper
 {
-    void Http(const char* url, std::list<std::pair<std::string, std::string>> & payload, const char* callback);
+    void Http(const char* url, std::list<std::pair<std::string, std::string>> & payload, const char* id, const char* command);
     std::string EscapeHtml(const char* text);
 }
 

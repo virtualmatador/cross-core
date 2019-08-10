@@ -42,7 +42,7 @@ core::Runner::Runner(__int32_t view_info, __int32_t image_width)
                 std::unique_lock<std::mutex> lock_condition(lock_step_);
                 step_ = false;
                 lock_condition.unlock();
-                bridge::PostThreadMessage(index, "body tick");
+                bridge::PostThreadMessage(index, "body", "tick", "");
                 lock_condition.lock();
                 condition_step_.wait(lock_condition, [this](){ return step_ || !run_; });
                 if (!run_)
