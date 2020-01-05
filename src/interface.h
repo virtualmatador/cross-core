@@ -9,8 +9,7 @@
 #ifndef CORE_INTERFACE_H
 #define CORE_INTERFACE_H
 
-#include <stdint.h>
-
+#include <cstdint>
 
 namespace interface
 {

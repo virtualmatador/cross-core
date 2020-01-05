@@ -15,7 +15,7 @@ void helper::Http(const char* url, std::list<std::pair<std::string, std::string>
 {
     for (const auto & param : params)
         bridge::AddParam(param.first.c_str(), param.second.c_str());
-    bridge::PostHttp(core::Stage::index_, url, id, command);
+    bridge::PostHttp(core::Stage::index_, id, command, url);
 }
 
 std::string helper::EscapeHtml(const char* text)

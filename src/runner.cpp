@@ -8,7 +8,6 @@
 
 #include "runner.h"
 
-#include <string>
 #include <sstream>
 
 
@@ -80,7 +79,7 @@ void core::Runner::SetHandlers()
 {
     handlers_["body"] = [&](const char* command, const char* info)
     {
-        if (strlen(command) == 0)
+        if (std::strlen(command) == 0)
             return;
         else if (std::strcmp(command, "tick") == 0)
             Tick();

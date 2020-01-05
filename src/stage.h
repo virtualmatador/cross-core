@@ -13,7 +13,6 @@
 #include "define.h"
 
 #include <map>
-#include <string>
 #include <functional>
 #include <memory>
 #include <thread>

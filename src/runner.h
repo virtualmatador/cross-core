@@ -11,10 +11,11 @@
 
 #include "stage.h"
 
-#include <thread>
-#include <mutex>
-#include <condition_variable>
 #include <chrono>
+#include <condition_variable>
+#include <cstdint>
+#include <mutex>
+#include <thread>
 
 
 namespace core

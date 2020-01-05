@@ -8,7 +8,6 @@
 
 #include "stage.h"
 
-#include <string>
 #include <sstream>
 #include <thread>
 

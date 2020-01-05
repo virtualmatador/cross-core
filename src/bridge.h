@@ -9,8 +9,8 @@
 #ifndef CORE_IMPORT_H
 #define CORE_IMPORT_H
 
+#include <cstdint>
 #include <string>
-
 
 namespace bridge
 {
@@ -26,7 +26,7 @@ namespace bridge
     void SetPreference(const char* key, const char* value);
     void PostThreadMessage(const __int32_t sender, const char* id, const char* command, const char* info);
     void AddParam(const char* key, const char* value);
-    void PostHttp(const __int32_t sender, const char* url, const char* id, const char* command);
+    void PostHttp(const __int32_t sender, const char* id, const char* command, const char* url);
     void Exit();
 }
 
