@@ -18,8 +18,6 @@ core::Runner::Runner(__int32_t view_info, __int32_t image_width)
     , width_{0}
     , height_{0}
     , order_rgba_{0}
-    , touch_x_{0.0f}
-    , touch_y_{0.0f}
     , frame_lenght_{0}
 {
     SetHandlers();
@@ -122,6 +120,4 @@ void core::Runner::Touch(int action, const char* position)
         TouchEnd(x, y);
         break;
     }
-    touch_x_ = x;
-    touch_y_ = y;
 }

@@ -35,8 +35,6 @@ namespace core
         __int32_t  width_;
         __int32_t  height_;
         __uint32_t order_rgba_;
-        float touch_x_;
-        float touch_y_;
 
     public:
         Runner(__int32_t view_info, __int32_t image_width);
