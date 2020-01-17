@@ -37,7 +37,7 @@ namespace core
         __uint32_t order_rgba_;
 
     public:
-        Runner(__int32_t view_info, __int32_t image_width);
+        Runner(__int32_t view_info, __int32_t image_width, const char* waves);
         ~Runner();
         void Run(const char* dimensions);
         void Tick();

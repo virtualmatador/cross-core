@@ -8,10 +8,11 @@
 
 #include "runner.h"
 
+#include <cstring>
 #include <sstream>
 
 
-core::Runner::Runner(__int32_t view_info, __int32_t image_width)
+core::Runner::Runner(__int32_t view_info, __int32_t image_width, const char* waves)
     : run_{true}
     , step_{false}
     , dpi_{0}
@@ -49,7 +50,7 @@ core::Runner::Runner(__int32_t view_info, __int32_t image_width)
                 std::this_thread::sleep_for(wait);
         }
     });
-    bridge::LoadImageView(index_, view_info, image_width);
+    bridge::LoadImageView(index_, view_info, image_width, waves);
 }
 
 core::Runner::~Runner()
@@ -96,11 +97,11 @@ void core::Runner::Run(const char* dimensions)
 {
     std::istringstream parser(dimensions);
     parser >> dpi_ >> width_ >> height_ >> order_rgba_;
+    Initial();
     lock_step_.lock();
     step_ = true;
     lock_step_.unlock();
     condition_step_.notify_all();
-    Initial();
 }
 
 void core::Runner::Touch(int action, const char* position)

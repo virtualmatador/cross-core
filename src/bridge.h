@@ -15,8 +15,8 @@
 namespace bridge
 {
     void NeedRestart();
-    void LoadWebView(const __int32_t sender, const __int32_t view_info, const char *html);
-    void LoadImageView(const __int32_t sender, const __int32_t view_info, const __int32_t image_width);
+    void LoadWebView(const __int32_t sender, const __int32_t view_info, const char *html, const char* waves);
+    void LoadImageView(const __int32_t sender, const __int32_t view_info, const __int32_t image_width, const char* waves);
     __uint32_t* GetPixels();
     void ReleasePixels(__uint32_t* const pixels);
     void RefreshImageView();
@@ -27,6 +27,7 @@ namespace bridge
     void PostThreadMessage(const __int32_t sender, const char* id, const char* command, const char* info);
     void AddParam(const char* key, const char* value);
     void PostHttp(const __int32_t sender, const char* id, const char* command, const char* url);
+    void PlayAudio(const __int32_t index);
     void Exit();
 }
 
