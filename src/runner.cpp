@@ -84,6 +84,8 @@ void core::Runner::SetHandlers()
             Tick();
         else if (std::strcmp(command, "ready") == 0)
             Run(info);
+        else if (std::strcmp(command, "resize") == 0)
+            Resize(info);
         else if (std::strcmp(command, "touch-begin") == 0)
             Touch(1, info);
         else if (std::strcmp(command, "touch-move") == 0)
@@ -102,6 +104,13 @@ void core::Runner::Run(const char* dimensions)
     step_ = true;
     lock_step_.unlock();
     condition_step_.notify_all();
+}
+
+void core::Runner::Resize(const char* size)
+{
+    std::istringstream parser(size);
+    parser >> width_ >> height_;
+    Initial();
 }
 
 void core::Runner::Touch(int action, const char* position)

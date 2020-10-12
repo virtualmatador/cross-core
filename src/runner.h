@@ -40,6 +40,7 @@ namespace core
         Runner(__int32_t view_info, __int32_t image_width, const char* waves);
         ~Runner();
         void Run(const char* dimensions);
+        void Resize(const char* size);
         void Tick();
 
     private:
