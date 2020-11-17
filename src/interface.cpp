@@ -63,7 +63,7 @@ void interface::Handle(const char* id, const char* command, const char* info)
     core::Stage::stage_->Handle(id, command, info);
 }
 
-void interface::HandleAsync(const __int32_t receiver, const char* id, const char* command, const char* info)
+void interface::HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info)
 {
     if (core::Stage::index_ == receiver)
         core::Stage::stage_->Handle(id, command, info);

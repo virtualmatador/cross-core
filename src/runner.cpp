@@ -12,7 +12,7 @@
 #include <sstream>
 
 
-core::Runner::Runner(__int32_t view_info, __int32_t image_width, const char* waves)
+core::Runner::Runner(std::int32_t view_info, std::int32_t image_width, const char* waves)
     : run_{true}
     , step_{false}
     , dpi_{0}
@@ -64,7 +64,7 @@ core::Runner::~Runner()
 
 void core::Runner::Tick()
 {
-    __uint32_t* pixels = bridge::GetPixels();
+    std::uint32_t* pixels = bridge::GetPixels();
     Step(pixels);
     bridge::ReleasePixels(pixels);
     bridge::RefreshImageView();

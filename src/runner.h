@@ -31,13 +31,13 @@ namespace core
 
     protected:
         std::chrono::milliseconds frame_lenght_;
-        __int32_t dpi_;
-        __int32_t  width_;
-        __int32_t  height_;
-        __uint32_t order_rgba_;
+        std::int32_t dpi_;
+        std::int32_t  width_;
+        std::int32_t  height_;
+        std::uint32_t order_rgba_;
 
     public:
-        Runner(__int32_t view_info, __int32_t image_width, const char* waves);
+        Runner(std::int32_t view_info, std::int32_t image_width, const char* waves);
         ~Runner();
         void Run(const char* dimensions);
         void Resize(const char* size);
@@ -49,7 +49,7 @@ namespace core
 
     protected:
         virtual void Initial() = 0;
-        virtual void Step(__uint32_t* pixels) = 0;
+        virtual void Step(std::uint32_t* pixels) = 0;
         virtual void TouchBegin(float x, float y) = 0;
         virtual void TouchMove(float x, float y) = 0;
         virtual void TouchEnd(float x, float y) = 0;

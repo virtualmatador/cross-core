@@ -15,19 +15,19 @@
 namespace bridge
 {
     void NeedRestart();
-    void LoadWebView(const __int32_t sender, const __int32_t view_info, const char *html, const char* waves);
-    void LoadImageView(const __int32_t sender, const __int32_t view_info, const __int32_t image_width, const char* waves);
-    __uint32_t* GetPixels();
-    void ReleasePixels(__uint32_t* const pixels);
+    void LoadWebView(const std::int32_t sender, const std::int32_t view_info, const char *html, const char* waves);
+    void LoadImageView(const std::int32_t sender, const std::int32_t view_info, const std::int32_t image_width, const char* waves);
+    std::uint32_t* GetPixels();
+    void ReleasePixels(std::uint32_t* const pixels);
     void RefreshImageView();
     void CallFunction(const char* function);
     std::string GetAsset(const char* key);
     std::string GetPreference(const char* key);
     void SetPreference(const char* key, const char* value);
-    void PostThreadMessage(const __int32_t sender, const char* id, const char* command, const char* info);
+    void PostThreadMessage(const std::int32_t sender, const char* id, const char* command, const char* info);
     void AddParam(const char* key, const char* value);
-    void PostHttp(const __int32_t sender, const char* id, const char* command, const char* url);
-    void PlayAudio(const __int32_t index);
+    void PostHttp(const std::int32_t sender, const char* id, const char* command, const char* url);
+    void PlayAudio(const std::int32_t index);
     void Exit();
 }
 

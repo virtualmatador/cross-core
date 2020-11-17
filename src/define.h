@@ -14,7 +14,7 @@
 
 namespace core
 {
-    enum class VIEW_INFO: __int32_t
+    enum class VIEW_INFO: std::int32_t
     {
         Default = 0x00000000,
         Portrait = 0x00000001,
