@@ -13,6 +13,8 @@
 
 namespace interface
 {
+extern "C"
+{
     void Begin();
     void End();
     void Create();
@@ -23,6 +25,7 @@ namespace interface
     void Escape();
     void Handle(const char* id, const char* command, const char* info);
     void HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info);
+}
 }
 
 #endif //CORE_INTERFACE_H
