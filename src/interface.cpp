@@ -11,10 +11,8 @@
 #include "stage.h"
 #include "runner.h"
 
-
 void interface::Begin()
 {
-    core::Stage::index_ = 0;
     life_cycle::Begin();
 }
 
@@ -33,7 +31,6 @@ void interface::Destroy()
     life_cycle::Destroy();
 }
 
-
 void interface::Start()
 {
     life_cycle::Start();
@@ -42,9 +39,9 @@ void interface::Start()
 
 void interface::Stop()
 {
-    life_cycle::Stop();
     ++core::Stage::index_;
     core::Stage::stage_.reset(nullptr);
+    life_cycle::Stop();
 }
 
 void interface::Restart()

@@ -12,7 +12,7 @@
 #include <thread>
 
 
-int core::Stage::index_;
+int core::Stage::index_ = 0;
 std::unique_ptr<core::Stage> core::Stage::stage_;
 
 core::Stage::Stage()
