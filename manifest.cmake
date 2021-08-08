@@ -1,4 +1,4 @@
-file(STRINGS "${CMAKE_CURRENT_LIST_DIR}/../../manifest.txt" manifest)
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/../../manifest.txt" manifest)
 foreach(key_value ${manifest})
     string(REGEX MATCH "^[^=]+" key ${key_value})
     string(REPLACE "${key}=" "" value ${key_value})
