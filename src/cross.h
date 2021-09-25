@@ -11,7 +11,7 @@
 
 #include <cstdint>
 
-namespace interface
+namespace cross
 {
 extern "C"
 {

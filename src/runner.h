@@ -37,7 +37,7 @@ namespace core
         std::uint32_t order_rgba_;
 
     public:
-        Runner(std::int32_t view_info, std::int32_t image_width, const char* waves);
+        Runner(std::int32_t view_info, std::int32_t image_width);
         ~Runner();
         void Run(const char* dimensions);
         void Resize(const char* size);

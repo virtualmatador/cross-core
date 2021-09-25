@@ -6,61 +6,61 @@
 //  Copyright © 2019 Shaidin. All rights reserved.
 //
 
-#include "interface.h"
+#include "cross.h"
 #include "main.h"
 #include "stage.h"
 #include "runner.h"
 
-void interface::Begin()
+void cross::Begin()
 {
     life_cycle::Begin();
 }
 
-void interface::End()
+void cross::End()
 {
     life_cycle::End();
 }
 
-void interface::Create()
+void cross::Create()
 {
     life_cycle::Create();
 }
 
-void interface::Destroy()
+void cross::Destroy()
 {
     life_cycle::Destroy();
 }
 
-void interface::Start()
+void cross::Start()
 {
     life_cycle::Start();
-    interface::Restart();
+    cross::Restart();
 }
 
-void interface::Stop()
+void cross::Stop()
 {
     ++core::Stage::index_;
     core::Stage::stage_.reset(nullptr);
     life_cycle::Stop();
 }
 
-void interface::Restart()
+void cross::Restart()
 {
     ++core::Stage::index_;
     life_cycle::Restart();
 }
 
-void interface::Escape()
+void cross::Escape()
 {
     core::Stage::stage_->Escape();
 }
 
-void interface::Handle(const char* id, const char* command, const char* info)
+void cross::Handle(const char* id, const char* command, const char* info)
 {
     core::Stage::stage_->Handle(id, command, info);
 }
 
-void interface::HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info)
+void cross::HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info)
 {
     if (core::Stage::index_ == receiver)
         core::Stage::stage_->Handle(id, command, info);

@@ -12,7 +12,7 @@
 #include <sstream>
 
 
-core::Runner::Runner(std::int32_t view_info, std::int32_t image_width, const char* waves)
+core::Runner::Runner(std::int32_t view_info, std::int32_t image_width)
     : run_{true}
     , step_{false}
     , dpi_{0}
@@ -40,7 +40,7 @@ core::Runner::Runner(std::int32_t view_info, std::int32_t image_width, const cha
                 std::unique_lock<std::mutex> lock_condition(lock_step_);
                 step_ = false;
                 lock_condition.unlock();
-                bridge::PostThreadMessage(index, "body", "tick", "");
+                bridge::AsyncMessage(index, "body", "tick", "");
                 lock_condition.lock();
                 condition_step_.wait(lock_condition, [this](){ return step_ || !run_; });
                 if (!run_)
@@ -50,7 +50,7 @@ core::Runner::Runner(std::int32_t view_info, std::int32_t image_width, const cha
                 std::this_thread::sleep_for(wait);
         }
     });
-    bridge::LoadImageView(index_, view_info, image_width, waves);
+    bridge::LoadImageView(index_, view_info, image_width);
 }
 
 core::Runner::~Runner()
