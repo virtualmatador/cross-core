@@ -9,7 +9,6 @@
 #include "cross.h"
 #include "main.h"
 #include "stage.h"
-#include "runner.h"
 
 void cross::Begin()
 {
