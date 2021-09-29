@@ -10,6 +10,8 @@
 #define CORE_INTERFACE_H
 
 #include <cstdint>
+#include <functional>
+#include <vector>
 
 namespace cross
 {
@@ -25,6 +27,7 @@ extern "C"
     void Escape();
     void Handle(const char* id, const char* command, const char* info);
     void HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info);
+    void FeedUri(const char* uri, std::function<void(const std::vector<unsigned char>&)>&& consume);
 }
 }
 

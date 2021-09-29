@@ -22,6 +22,8 @@ namespace bridge
     void AsyncMessage(const std::int32_t sender, const char* id, const char* command, const char* info);
     void AddParam(const char* key, const char* value);
     void PostHttp(const std::int32_t sender, const char* id, const char* command, const char* url);
+    void CreateImage(const char* id, const char* parent);
+    void ResetImage(const std::int32_t sender, const std::int32_t index, const char* id);
     void Exit();
 }
 

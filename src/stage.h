@@ -16,6 +16,7 @@
 #include <functional>
 #include <memory>
 #include <thread>
+#include <vector>
 
 namespace core
 {
@@ -30,6 +31,8 @@ namespace core
         virtual ~Stage();
         void Handle(const char* id, const char* command, const char* info);
         virtual void Escape() = 0;
+        virtual void FeedUri(const char* uri, std::function<void(
+            const std::vector<unsigned char>&)>&& consume) = 0;
 
     public:
         static int index_;

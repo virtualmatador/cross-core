@@ -6,6 +6,8 @@
 //  Copyright © 2019 Shaidin. All rights reserved.
 //
 
+#include <sstream>
+
 #include "cross.h"
 #include "main.h"
 #include "stage.h"
@@ -62,5 +64,20 @@ void cross::Handle(const char* id, const char* command, const char* info)
 void cross::HandleAsync(const std::int32_t receiver, const char* id, const char* command, const char* info)
 {
     if (core::Stage::index_ == receiver)
+    {
         core::Stage::stage_->Handle(id, command, info);
+    }
+}
+
+void cross::FeedUri(const char* uri, std::function<void(const std::vector<unsigned char>&)>&& consume)
+{
+    int32_t receiver = 0;
+    uri += sizeof("cross://") - 1;
+    std::istringstream is{ uri };
+    is >> receiver;
+    uri += (std::size_t)is.tellg() + 1;
+    if (core::Stage::stage_->index_ == receiver)
+    {
+        core::Stage::stage_->FeedUri(uri, std::move(consume));
+    }
 }
